@@ -1,37 +1,48 @@
 #include <iostream>
-#include "Autocomplete.h"
+// #include "Autocomplete.h"
+#include "PrefixMatcher.h"
 
 int main() {
-    Autocomplete autocomplete;
-    autocomplete.insert("bin");
-    autocomplete.insert("ball");
-    autocomplete.insert("ballet");
+    // Autocomplete autocomplete;
+    // autocomplete.insert("bin");
+    // autocomplete.insert("ball");
+    // autocomplete.insert("ballet");
 
-    std::vector<std::string> suggestions;
+    // std::vector<std::string> suggestions;
 
-    suggestions = autocomplete.getSuggestions("b");
-    for (std::string s : suggestions) {
-        std::cout << s << " ";
-    }
-    std::cout << std::endl;
+    // suggestions = autocomplete.getSuggestions("b");
+    // for (std::string s : suggestions) {
+    //     std::cout << s << " ";
+    // }
+    // std::cout << std::endl;
 
-    suggestions = autocomplete.getSuggestions("ba");
-    for (std::string s : suggestions) {
-        std::cout << s << " ";
-    }
-    std::cout << std::endl;
+    // suggestions = autocomplete.getSuggestions("ba");
+    // for (std::string s : suggestions) {
+    //     std::cout << s << " ";
+    // }
+    // std::cout << std::endl;
 
-    suggestions = autocomplete.getSuggestions("bal");
-    for (std::string s : suggestions) {
-        std::cout << s << " ";
-    }
-    std::cout << std::endl;
+    // suggestions = autocomplete.getSuggestions("bal");
+    // for (std::string s : suggestions) {
+    //     std::cout << s << " ";
+    // }
+    // std::cout << std::endl;
 
-    suggestions = autocomplete.getSuggestions("balle");
-    for (std::string s : suggestions) {
-        std::cout << s << " ";
-    }
-    std::cout << std::endl;
+    // suggestions = autocomplete.getSuggestions("balle");
+    // for (std::string s : suggestions) {
+    //     std::cout << s << " ";
+    // }
+    // std::cout << std::endl;
+
+    PrefixMatcher prefixMatcher;
+    prefixMatcher.insert("110011011101", 1);
+    prefixMatcher.insert("110011011", 2);
+    prefixMatcher.insert("11001101", 3);
+
+    std::string destinationAddress = "11001101110";
+    int selectedRouter = prefixMatcher.selectRouter(destinationAddress);
+    std::cout << "Selected router: " << selectedRouter << std::endl;
+
 
     return 0;
 }
